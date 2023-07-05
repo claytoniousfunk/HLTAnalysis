@@ -24,7 +24,7 @@ for((i=1; i <= LIMIT; i++)) ; do
 
     echo "[triggerEmulation] Setting up configuration for file $i..."
 
-    hltGetConfiguration $TRIGGERMENU --globaltag $GLOBALTAG --l1Xml $L1MENU --l1-emulator $L1EMULATOR  --era $ERA --input $FILEPATH_i --process MyHLT --full --mc --unprescale --no-output --max-events -1 > ExportedMenu.py
+    hltGetConfiguration $TRIGGERMENU --globaltag $GLOBALTAG --l1Xml $L1MENU --l1-emulator $L1EMULATOR --era $ERA --input $FILEPATH_i --process MyHLT --full --mc --unprescale --no-output --max-events -1 > ExportedMenu.py
 
     echo "[triggerEmulation] editing ExportedMenu.py..."
 
