@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TRIGGERMENU="/users/cbennett/HLT_jetTriggerAnalysis_ppRef/V15"
+TRIGGERMENU="/users/cbennett/HLT_jetTriggerAnalysis_ppRef_slim/V15"
 GLOBALTAG="auto:phase1_2021_realistic_hi"
 L1MENU="L1Menu_CollisionsHeavyIons2022_v0_0_0.xml"
 L1EMULATOR="uGT"
@@ -26,19 +26,24 @@ for((i=1; i <= LIMIT; i++)) ; do
     echo "[triggerEmulation] editing ExportedMenu.py..."
 
     echo '
-      # Define the output
-      process.output = cms.OutputModule("PoolOutputModule",
-        outputCommands = cms.untracked.vstring("drop *", "keep *_TriggerResults_*_*", "keep *_hltTriggerSummaryAOD_*_*", "keep *_hltGtStage2Digis_*_*", "keep *_hltGtStage2ObjectMap_*_*"),
-        fileName = cms.untracked.string("output.root"),
-      )
-      process.output_path = cms.EndPath(process.output)
+# Define the output
+process.output = cms.OutputModule("PoolOutputModule",
+    outputCommands = cms.untracked.vstring("drop *", "keep *_TriggerResults_*_*", "keep *_hltTriggerSummaryAOD_*_*", "keep *_hltGtStage2Digis_*_*", "keep *_hltGtStage2ObjectMap_*_*"),
+    fileName = cms.untracked.string("output.root"),
+)
+process.output_path = cms.EndPath(process.output)
 
-      process.schedule.append( process.output_path )  # enable this line if you want to get an output containing trigger info to be used for further analysis, e.g. "TriggerResults", digis etc
+process.schedule.append( process.output_path )  # enable this line if you want to get an output containing trigger info to be used for further analysis, e.g. "TriggerResults", digis etc
 
-    ' >> ExportedMenu.py
+' >> ExportedMenu.py
 
+    echo "[triggerEmulation] deleting lines in ExportedMenu.py..."
 
+    sed -in '10163,10178d' ExportedMenu.py; rm ExportedMenu.pyn;
 
+    echo "[triggerEmulation] running the menu..."
+
+    cmsRun ExportedMenu.py &> menulog.txt
 
     
 done
