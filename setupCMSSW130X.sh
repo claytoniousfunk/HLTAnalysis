@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "running cmsrel..."
+echo "[setupCMSSW130X] running cmsrel..."
 
 cmsrel CMSSW_13_0_0
 
@@ -8,7 +8,7 @@ cd CMSSW_13_0_0/src
 
 cmsenv
 
-echo "retrieving packages from git..."
+echo "[setupCMSSW130X] retrieving packages from git..."
 
 git cms-addpkg HLTrigger/Configuration
 
@@ -18,13 +18,13 @@ git cms-addpkg RecoPixelVertexing/PixelTriplets
 
 mkdir -p L1Trigger/L1TGlobal/data/Luminosity/startup/ && cd L1Trigger/L1TGlobal/data/Luminosity/startup/
 
-echo "retrieving L1 menu..."
+echo "[setupCMSSW130X] retrieving L1 menu..."
 
 wget https://raw.githubusercontent.com/cms-l1-dpg/L1MenuRun3/master/development/L1Menu_CollisionsHeavyIons2022_v1_1_0/L1Menu_CollisionsHeavyIons2022_v1_1_0.xml
 
 cd $CMSSW_BASE/src
 
-echo "retrieving more info from git..."
+echo "[setupCMSSW130X] retrieving more info from git..."
 
 git cms-addpkg HLTrigger/HLTanalyzers
 
@@ -36,13 +36,23 @@ git cms-addpkg RecoPixelVertexing/PixelTriplets
 
 git cms-merge-topic denerslemos:HLTBitAna_CMSSW_13_0_X
 
-echo "compiling code..."
+echo "[setupCMSSW130X] compiling code..."
 
 scram b -j 10
 
+echo "[setupCMSSW130X] running cmsenv in src..."
+
+cmsenv
+
+echo "[setupCMSSW130X] Creating workstation folder..."
+
 cd HLTrigger/Configuration/test && mkdir workstation && cd workstation
 
-echo "done!"
+echo "[setupCMSSW130X] copying over triggerEmulation.sh..."
+
+cp ../../../../../../triggerEmulation.sh .
+
+echo "[setupCMSSW130X] done!"
 
 
 
