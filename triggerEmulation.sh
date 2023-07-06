@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TRIGGERMENU="/users/cbennett/HLT_jetTriggerAnalysis_slim/V13"
+TRIGGERMENU="/users/cbennett/HLT_jetTriggerAnalysis_slim/V32"
 GLOBALTAG="auto:phase1_2021_realistic_hi"
 L1MENU="L1Menu_CollisionsHeavyIons2022_v0_0_0.xml"
 L1EMULATOR="uGT"
