@@ -40,13 +40,13 @@ process.schedule.append( process.output_path )  # enable this line if you want t
 
 ' >> ExportedMenu.py
     
-    #echo "[triggerEmulation] deleting lines in ExportedMenu.py..."
+    echo "[triggerEmulation] deleting lines in ExportedMenu.py..."
 
-    #sed -in '12226,12241d' ExportedMenu.py; rm ExportedMenu.pyn;
+    sed -in '10163,10178d' ExportedMenu.py; rm ExportedMenu.pyn;
 
-    #echo "[triggerEmulation] running the menu..."
+    echo "[triggerEmulation] running the menu..."
 
-    #cmsRun ExportedMenu.py &> menulog.txt
+    cmsRun ExportedMenu.py &> menulog.txt
 
     
 done
