@@ -46,7 +46,7 @@ cd HLTrigger/Configuration/test && mkdir workstation && cd workstation
 
 echo "[setupCMSSW130X] copying over triggerEmulation.sh..."
 
-cp ../../../../../../triggerEmulation.sh .
+cp ../../../../../../triggerEmulation_pp.sh .
 
 echo "[setupCMSSW130X] done!"
 echo "[setupCMSSW130X] Remember to run 'cmsenv' in the new CMSSW src!"
