@@ -40,10 +40,6 @@ echo "[setupCMSSW130X] compiling code..."
 
 scram b -j 10
 
-echo "[setupCMSSW130X] running cmsenv in src..."
-
-cmsenv
-
 echo "[setupCMSSW130X] Creating workstation folder..."
 
 cd HLTrigger/Configuration/test && mkdir workstation && cd workstation
@@ -53,7 +49,7 @@ echo "[setupCMSSW130X] copying over triggerEmulation.sh..."
 cp ../../../../../../triggerEmulation.sh .
 
 echo "[setupCMSSW130X] done!"
-
+echo "[setupCMSSW130X] Remember to run 'cmsenv' in the new CMSSW src!"
 
 
 
