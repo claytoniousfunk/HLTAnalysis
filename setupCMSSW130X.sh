@@ -2,9 +2,9 @@
 
 echo "[setupCMSSW130X] running cmsrel..."
 
-cmsrel CMSSW_13_0_0
+cmsrel CMSSW_13_2_0_pre1
 
-cd CMSSW_13_0_0/src
+cd CMSSW_13_2_0_pre1/src
 
 cmsenv
 
